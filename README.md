@@ -63,7 +63,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement subscribe function in Notification controller.`
     -   [x] Commit: `Implement unsubscribe function in Notification service.`
     -   [x] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -96,5 +96,27 @@ Menurut saya DashMap disini masih diperlukan karena memberikan keuntungan dalam 
 Meskipun DashMap lebih baik, tidak menutup kemungkinan bahwa Singleton Pattern juga dapat digunakan dalam BambangShop ini. Karena Singleton Pattern bisa digunakan untuk memastikan hanya ada satu instance dari daftar subscriber dalam aplikasi.
 
 #### Reflection Publisher-2
+*1. In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”. Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate “Service” and “Repository” from a Model?*
+
+Dalam Model-View-Controller (MVC) klasik, Model bertanggung jawab atas data dan logika bisnis. Namun terkadang dengan bertambahnya kompleksitas aplikasi dikarenakan improvisasi, akan lebih baik jika service dan juga repository dipisah agar menyajikan kode yang lebih terorganisir.
+
+Pemisahan ini juga bukan tanpa alasan. Pemisahan ini juga mempunyai manfaat tersendiri yang akan berefek ke kode kedepannya. Beberapa manfaatnya yaitu lebih mudah diuji ketika ingin mengetes logika secara terpisah dari akses database. Kemudian lebih fleksibel jika ada perubahan pada database jadi cukup mengubah repository tanpa mempengaruhi service. Lalu juga kode akan lebih bersih dan modular.
+
+*2. What happens if we only use the Model? Explain your imagination on how the interactions between each model (Program, Subscriber, Notification) affect the code complexity for each model?*
+
+Jika hanya menggunakan model, maka interaksi antar Model akan menjadi sulit dirawat dan kompleks. Model akan melakukan semua aspek mulai dari database, logika dan juga komunikasi antar entitas sekaligus. Ini akan berakibat Model terlalu besar dan sulit diuji maupun di-maintain. Jadi peran seperti Service, Repository dan juga Controller penting adanya dan memiliki masing - masing tugas yang jelas sehingga kode mudah dikelola.
+
+*3. Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.*
+
+Menurut saya postman cukup berguna ketika ingin menguji suatu API tanpa harus membuat sebuah testcase atau frontend output.
+
+Ada beberapa manfaat postman yang bisa digunakan pada tutorial kali ini:
+    - Mengirim request HTTP untuk mengetes API bekerja atau tidak.
+    - Menyimpan request sehingga bisa mengulangi pengujian tanpa menulis ulang data.
+    - Menjalankan tes otomatis dengan Postman Tests untuk mengecek respons dari API.
+    - Menggunakan Environment Variables (env) untuk menyimpan base URL ataupun token autentikasi sehingga tidak perlu diketik ulang.
+    - Simulasi berbagai skenario untuk menguji beberapa testcase atau kasus.
+
+Untuk proyek ke depan, postman juga memiliki fitur lain yang dapat digunakan seperti Mock Servers yang bisa digunakan untuk mensimulasikan respons API. Lalu juga ada Newman CLI yang bisa digunakan untuk menjalankan postman secara otomatis dalam CI/CD pipeline untuk mengetes API berfungsi atau tidak setelah perubahan kode.
 
 #### Reflection Publisher-3
