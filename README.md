@@ -120,3 +120,25 @@ Ada beberapa manfaat postman yang bisa digunakan pada tutorial kali ini:
 Untuk proyek ke depan, postman juga memiliki fitur lain yang dapat digunakan seperti Mock Servers yang bisa digunakan untuk mensimulasikan respons API. Lalu juga ada Newman CLI yang bisa digunakan untuk menjalankan postman secara otomatis dalam CI/CD pipeline untuk mengetes API berfungsi atau tidak setelah perubahan kode.
 
 #### Reflection Publisher-3
+*1. Observer Pattern has two variations: Push model (publisher pushes data to subscribers) and Pull model (subscribers pull data from publisher). In this tutorial case, which variation of Observer Pattern that we use?*
+
+Pada tutorial ini, variasi observer pattern adalah *Push Model*. Pendekatan ini, Publisher yang mana NotificationService akan langsung mengirimkan data ke semua subscriber saat terjadi perubahan tanpa harus diminta oleh subscriber. Untuk data yang dikirim berupa informasi seperti jenis produk, status dan URL.
+
+*2. What are the advantages and disadvantages of using the other variation of Observer Pattern for this tutorial case? (example: if you answer Q1 with Push, then imagine if we used Pull)*
+
+Keuntungan ketika menggunakan *Pull Mode*:
+    - Subscriber memiliki kontrol lebih besar karena bisa memilih kapan saja dan seberapa sering mengambil data sehingga bisa menghindari notifikasi yang tidak diperlukan.
+    - Mengurangi transfer data yang tidak diperlukan. Jika tidak membutuhkan update maka Pull Mode akan menundanya dan juga akan menghemat penggunaan bandwidth.
+
+Kerugian ketika menggunakan *Pull Mode*:
+    - Akan lebih kompleks karena subscriber harus mengimplementasikan mekanism permintaan secara berkala untuk mengecek update yang mana akan menambah beban pengembangan dan menambah kompleksitas kode.
+    - Update bisa tertunda karena subscriber hanya mendapatkan data ketika hanya diminta saja. Itu bisa mengakibatkan keterlambatan dalam menerima notifikasi dibandingkan jika kita menggunakan Push Model yang bersifat real-time.
+    - Publisher juga akan menanggung beban yang lebih besar jika subscriber sering meminta data dan bisa mengakibatkan kewalahan saat menangani permintaan terus menerus.
+
+*3. Explain what will happen to the program if we decide to not use multi-threading in the notification process.*
+
+Jika tidak menggunakan multi-threading pada proses motifikasi akan muncul beberapa masalah seperti:
+    - Proses akan menjadi lambat (blocking main thread)
+    - Kinerja menurun (performance bottleneck)
+    - Kurang skalabilitas (poor scalability)
+    - Respons sistem menurun
